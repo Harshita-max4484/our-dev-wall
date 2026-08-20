@@ -16,6 +16,9 @@ var CONFIG = {
   // Branch to fetch from
   branch: "main",
 
+  // Total number of students in the class (for the progress bar)
+  totalStudents: 90,
+
   // How many profiles to show (set to 0 for unlimited)
   limit: 0,
 

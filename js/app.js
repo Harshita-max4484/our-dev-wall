@@ -163,12 +163,16 @@
         '↗</a>';
     }
 
+    var certUrl = "certificate.html?name=" + encodeURIComponent(student.name || "") +
+      (student.github ? "&github=" + encodeURIComponent(student.github) : "");
+    var shareHtml = '<a class="card-share" href="' + certUrl + '" title="Get certificate">\u{1F3C6}</a>';
+
     card.innerHTML =
       photoHtml +
       '<h3 class="card-name">' + escapeHtml(student.name || "Anonymous") + '</h3>' +
       '<div class="card-github">@' + escapeHtml(student.github || "unknown") + '</div>' +
       (student.about ? '<p class="card-about">"' + escapeHtml(student.about) + '"</p>' : '<p class="card-about"></p>') +
-      '<div class="card-tech-row">' + techHtml + linkHtml + '</div>';
+      '<div class="card-tech-row">' + techHtml + linkHtml + shareHtml + '</div>';
 
     return card;
   }
@@ -191,6 +195,22 @@
     statStudents.textContent = students.length;
     statProfiles.textContent = students.length;
     statPrs.textContent = students.length;
+
+    // Update progress bar
+    var total = CONFIG.totalStudents || 90;
+    var count = students.length;
+    var pct = Math.min(Math.round((count / total) * 100), 100);
+    var progressText = document.getElementById("progress-text");
+    var progressCount = document.getElementById("progress-count");
+    var progressFill = document.getElementById("progress-fill");
+    if (progressText) progressText.textContent = "Class progress";
+    if (progressCount) progressCount.textContent = count + " / " + total + " students";
+    if (progressFill) {
+      // Animate after a short delay
+      setTimeout(function () {
+        progressFill.style.width = pct + "%";
+      }, 100);
+    }
   }
 
   function buildTechFilter() {
