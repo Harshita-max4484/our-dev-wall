@@ -8,7 +8,7 @@
  */
 var CONFIG = {
   // Your GitHub username or organization
-  owner: "YOUR_GITHUB_USERNAME",
+  owner: "ssagar1999",
 
   // The repository name (e.g. "our-dev-wall")
   repo: "our-dev-wall",
