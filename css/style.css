@@ -593,3 +593,89 @@ code {
     gap: 12px;
   }
 }
+
+/* ========================================
+   Header Actions & Theme Toggle
+   ======================================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+/* ========================================
+   Dark Mode
+   ======================================== */
+
+body.dark {
+  --bg: #0d0d0d;
+  --bg-card: #171717;
+  --text: #e5e5e5;
+  --text-secondary: #999;
+  --border: #2a2a2a;
+  --accent: #60a5fa;
+  --accent-light: #1e2a3a;
+  --success: #4ade80;
+}
+
+body.dark .theme-toggle .icon-sun {
+  display: none;
+}
+
+body.dark .theme-toggle .icon-moon {
+  display: block;
+}
+
+body.dark .json-block {
+  background: #111;
+  border: 1px solid #2a2a2a;
+}
+
+body.dark .card-initials {
+  background: #1e2a3a;
+}
+
+body.dark .search-box input,
+body.dark .filter-wrap select {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.dark .how-step-num {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+body.dark .mobile-menu-btn span {
+  background: var(--text);
+}
+
+body.dark .header-nav.open {
+  background: var(--bg-card);
+  border-color: var(--border);
+}

@@ -243,7 +243,16 @@
         renderCards(students);
       })
       .catch(function (err) {
-        loadingEl.innerHTML = '<p>Could not load profiles. Check the repository configuration in <code>js/config.js</code>.</p>';
+        // Fallback to local data if API unavailable (e.g. opening file locally)
+        if (typeof LOCAL_PROFILES !== "undefined" && LOCAL_PROFILES.length > 0) {
+          students = LOCAL_PROFILES;
+          loadingEl.style.display = "none";
+          updateStats();
+          buildTechFilter();
+          renderCards(students);
+        } else {
+          loadingEl.innerHTML = '<p>Could not load profiles. Check the repository configuration in <code>js/config.js</code>.</p>';
+        }
         console.error("DevWall error:", err);
       });
 
@@ -256,6 +265,19 @@
     if (menuBtn && nav) {
       menuBtn.addEventListener("click", function () {
         nav.classList.toggle("open");
+      });
+    }
+
+    // Dark mode toggle
+    var themeBtn = document.getElementById("theme-toggle");
+    var savedTheme = localStorage.getItem("devwall-theme");
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.body.classList.add("dark");
+    }
+    if (themeBtn) {
+      themeBtn.addEventListener("click", function () {
+        document.body.classList.toggle("dark");
+        localStorage.setItem("devwall-theme", document.body.classList.contains("dark") ? "dark" : "light");
       });
     }
   }
