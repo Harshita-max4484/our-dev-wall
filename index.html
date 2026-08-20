@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Dev Wall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,650;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="header-brand">Our Dev Wall</a>
+      <nav class="header-nav">
+        <a href="#students">Students</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" id="mobile-menu-btn">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-heading">Everyone has to start somewhere.</h1>
+      <p class="hero-sub">This is where we made our first PR.</p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container stats-inner">
+      <div class="stat">
+        <span class="stat-number" id="stat-students">—</span>
+        <span class="stat-label">students</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number" id="stat-profiles">—</span>
+        <span class="stat-label">profiles</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number" id="stat-prs">—</span>
+        <span class="stat-label">first PRs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Students Section -->
+  <section class="students-section" id="students">
+    <div class="container">
+      <h2 class="section-heading">Students</h2>
+
+      <div class="filters">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10.5" y1="10.5" x2="15" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="search-input" placeholder="Search students..." autocomplete="off">
+        </div>
+        <div class="filter-wrap">
+          <select id="tech-filter">
+            <option value="">All technologies</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="student-grid" id="student-grid">
+        <!-- Cards rendered by JS -->
+      </div>
+
+      <div class="empty-state" id="empty-state" style="display:none;">
+        <p>No students found. Try a different search.</p>
+      </div>
+
+      <div class="loading-state" id="loading-state">
+        <p>Loading profiles...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <h2 class="section-heading">Make your first change</h2>
+      <p class="section-sub">Your first contribution doesn't have to be complicated.</p>
+
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div class="how-step-content">
+            <h3>Find your folder</h3>
+            <p>Look for <code>students/your-github-username/</code> in the repository. If it doesn't exist, create it.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div class="how-step-content">
+            <h3>Edit your profile</h3>
+            <p>Open <code>profile.json</code> and change your name, bio, or favourite technology.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div class="how-step-content">
+            <h3>Add a photo <span class="optional-tag">optional</span></h3>
+            <p>Add a <code>photo.jpg</code> in the same folder. Keep it small (under 500KB).</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <div class="how-step-content">
+            <h3>Commit &amp; push</h3>
+            <p>Save your changes, commit them, and push to your fork.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">5</div>
+          <div class="how-step-content">
+            <h3>Open a Pull Request</h3>
+            <p>Go to the original repository and click <strong>New Pull Request</strong>. Your teacher will merge it.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- JSON Example -->
+      <div class="json-example">
+        <h3 class="json-example-title">What your <code>profile.json</code> looks like</h3>
+        <pre class="json-block"><code>{
+  "name": "Rahul Kumar",
+  "github": "rahul_dev",
+  "about": "Trying web development for the first time.",
+  "favoriteTech": "JavaScript",
+  "image": "./photo.jpg"
+}</code></pre>
+        <p class="json-fields">
+          <span><code>name</code> — your full name</span>
+          <span><code>github</code> — your GitHub username</span>
+          <span><code>about</code> — a short bio (one sentence)</span>
+          <span><code>favoriteTech</code> — something you're learning</span>
+          <span><code>image</code> — path to your photo (optional)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made by the class · <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
